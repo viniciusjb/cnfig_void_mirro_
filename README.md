@@ -136,10 +136,54 @@ $ sv status apache
 ## Configurar Apache
 
 A configuração principal do Apache está no arquivo /etc/apache/httpd.conf. Para editar este arquivo:
+https://github.com/viniciusjb/cnfig_void_mirro_/blob/main/httpd.conf
 
 ```
 nano /etc/apache/httpd.conf
 ```
+Por exemplo, para permitir a listagem de diretórios em uma pasta específica, como /home/user/public_html, adicione ou edite a seguinte seção no httpd.conf:
+
+```
+<Directory /home/bruto/mirror/void>
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+</Directory>
+
+```
+
+Para alterar o diretório padrão do Apache no Void Linux (ou qualquer outra distribuição Linux), siga os seguintes passos. 
+Neste exemplo, vamos alterar o caminho padrão de /var/www/htdocs para outro diretório, como /home/user/public_html
+
+Abra o arquivo de configuração principal do Apache, que está localizado em /etc/apache/httpd.conf:
+
+Encontre a linha onde o DocumentRoot está definido (geralmente perto do início do arquivo) e altere o caminho para o novo diretório desejado. 
+Por exemplo:
+
+```
+#
+# DocumentRoot: The directory out of which you will serve your
+# documents. By default, all requests are taken from this directory, but
+# symbolic links and aliases may be used to point to other locations.
+#
+DocumentRoot "/home/bruto/mirror/void"
+
+```
+
+Se você configurou um diretório específico, como /home/user/public_html, certifique-se 
+de que as permissões estejam corretas para que o Apache possa acessar este diretório:
+
+```
+$ chmod o+x /home/user
+$ chmod -R o+rx /home/user/public_html
+```
+
+Após editar as configurações, reinicie o Apache para aplicar as mudanças:
+
+```
+$ sv restart apache
+```
+
 
 
 
