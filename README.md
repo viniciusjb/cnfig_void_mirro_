@@ -104,5 +104,42 @@ chmod +x /caminho/para/seu/script.sh
 ```
 
 
+# Disponibilizar o servidor com Apache
+
+Instalar Apache
+
+No Void Linux, configurar o Apache (também conhecido como httpd no Void) é um processo similar ao 
+de outras distribuições, mas com algumas particularidades devido à forma como o Void gerencia pacotes e serviços.
+
+```
+# xbps-install -S apache
+```
+
+Iniciar e Habilitar o Serviço:
+
+Para habilitar o Apache no boot:
+
+```
+$ ln -s /etc/sv/apache /var/service/
+```
+Para iniciar o Apache imediatamente:
+
+```
+$ sv start apache
+```
+Para verificar o status:
+
+```
+$ sv status apache
+```
+
+## Configurar Apache
+
+A configuração principal do Apache está no arquivo /etc/apache/httpd.conf. Para editar este arquivo:
+
+```
+nano /etc/apache/httpd.conf
+```
+
 
 
