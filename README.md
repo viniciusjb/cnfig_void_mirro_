@@ -3,8 +3,8 @@ Configuração mirror local void
 
 ## Configuração do ambiente
 
-Para configuração do void mirror ou espelho local em um servidor void 
-utilizer os seguintes comandos:
+Para a configuração do mirror ou espelho local no Void Linux em um servidor,
+utilize os seguintes comandos:
 
 Atualize a lista de pacotes do void primeiramente
 
