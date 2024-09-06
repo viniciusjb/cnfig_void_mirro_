@@ -1,4 +1,4 @@
-# cnfig_void_mirro_
+# Configurando Espelho local "mirror void linux"
 Configuração mirror local void 
 
 ## Configuração do ambiente
