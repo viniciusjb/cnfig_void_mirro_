@@ -60,8 +60,9 @@ rsync \
 
 ```
 
-```
 Opções do rsync:
+
+```
 --recursive: Sincroniza diretórios de forma recursiva.
 --links: Preserva links simbólicos.
 --perms: Preserva permissões dos arquivos.
@@ -70,9 +71,11 @@ Opções do rsync:
 --progress: Mostra o progresso da transferência.
 --delete: Remove arquivos no destino que não existem mais na origem.
 Opções de Exclusão (--exclude):
+```
 
-Estas opções instruem o rsync a ignorar certos arquivos ou diretórios durante a sincronização.
+Estas opções instruem o rsync a ignorar certos arquivos ou diretórios durante a sincronização:
 
+```
 'debug': Exclui qualquer diretório ou arquivo chamado "debug".
 'aarch64': Exclui diretórios ou arquivos relacionados à arquitetura aarch64.
 '*.armv7l.xbps': Exclui arquivos com a extensão .armv7l.xbps.
