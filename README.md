@@ -1,4 +1,4 @@
-# Configurando Espelho local "mirror void linux"
+# Configurando espelho local "mirror void linux"
 Configuração mirror local void 
 
 ## Configuração do ambiente
