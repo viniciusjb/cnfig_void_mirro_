@@ -85,9 +85,10 @@ Estas opções instruem o rsync a ignorar certos arquivos ou diretórios durante
 'musl': Exclui diretórios ou arquivos relacionados a musl.
 
 ```
+## Resumo
+Este script configura uma sincronização eficiente entre um servidor espelho remoto do Void Linux e um diretório local, garantindo que apenas os arquivos e diretórios necessários sejam copiados. As exclusões específicas ajudam a evitar a transferência de arquivos que não são necessários para o seu uso, economizando espaço de armazenamento e largura de banda.
 
-
-Considerações Adicionais
+## Considerações Adicionais
 Agendamento: Para manter o espelho atualizado regularmente, você pode agendar a execução deste script usando o cron. Por exemplo, para executar diariamente às 2h da manhã, adicione uma entrada no crontab:
 
 ```
