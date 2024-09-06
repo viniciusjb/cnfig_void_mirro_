@@ -185,5 +185,25 @@ $ sv restart apache
 ```
 
 
+### Logs de Acesso do Apache
+
+```
+$ tail -f /var/log/httpd/access_log
+
+```
+
+# Verificar o Arquivo de Configuração do Repositório
+
+Em Void Linux, os repositórios estão configurados em arquivos dentro do diretório /etc/xbps.d/. Para mudar para o repositório desejado, você deve editar esses arquivos.
+
+Verifique se há algum arquivo com o repositório padrão listado. Por exemplo, o arquivo mais comum é 00-repository-main.conf.
+
+Para editar:
+
+```
+nano /etc/xbps.d/00-repository-main.conf
+
+```
+
 
 
