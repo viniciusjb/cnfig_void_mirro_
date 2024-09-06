@@ -60,6 +60,29 @@ rsync \
 
 ```
 
+```
+Opções do rsync:
+--recursive: Sincroniza diretórios de forma recursiva.
+--links: Preserva links simbólicos.
+--perms: Preserva permissões dos arquivos.
+--times: Preserva as marcas de tempo dos arquivos.
+--compress: Comprime os dados durante a transferência para economizar largura de banda.
+--progress: Mostra o progresso da transferência.
+--delete: Remove arquivos no destino que não existem mais na origem.
+Opções de Exclusão (--exclude):
+
+Estas opções instruem o rsync a ignorar certos arquivos ou diretórios durante a sincronização.
+
+'debug': Exclui qualquer diretório ou arquivo chamado "debug".
+'aarch64': Exclui diretórios ou arquivos relacionados à arquitetura aarch64.
+'*.armv7l.xbps': Exclui arquivos com a extensão .armv7l.xbps.
+'armv6l.xbps': Exclui arquivos específicos da arquitetura armv6l.
+'*.i686.xbps': Exclui arquivos com a extensão .i686.xbps.
+'*.armv?l.(convolution)': Exclui arquivos que correspondem ao padrão especificado (possivelmente uma tipografia incorreta; verifique se o padrão está correto).
+'musl': Exclui diretórios ou arquivos relacionados a musl.
+
+```
+
 
 Considerações Adicionais
 Agendamento: Para manter o espelho atualizado regularmente, você pode agendar a execução deste script usando o cron. Por exemplo, para executar diariamente às 2h da manhã, adicione uma entrada no crontab:
