@@ -8,7 +8,6 @@ utilizer os seguintes comandos:
 
 Atulize a lista de pacotes do void primeiramente
 
-'''
+```
 $ sudo xbps-install -Su
-...
-'''
+´´´
