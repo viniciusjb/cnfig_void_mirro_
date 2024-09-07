@@ -171,6 +171,7 @@ $ sv status apache
 A configuração principal do Apache está no arquivo /etc/apache/httpd.conf. Para editar este arquivo:
 https://github.com/viniciusjb/cnfig_void_mirro_/blob/main/httpd.conf
 
+
 ```
 nano /etc/apache/httpd.conf
 ```
