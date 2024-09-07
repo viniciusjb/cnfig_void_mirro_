@@ -168,7 +168,7 @@ $ sv status apache
 
 ## Configurar Apache
 
-A configuração principal do Apache está no arquivo /etc/apache/httpd.conf. Para editar este arquivo:
+A configuração principal do Apache está no arquivo ´/etc/apache/httpd.conf´. Para editar este arquivo:
 https://github.com/viniciusjb/cnfig_void_mirro_/blob/main/httpd.conf
 
 
@@ -187,9 +187,9 @@ Por exemplo, para permitir a listagem de diretórios em uma pasta específica, c
 ```
 
 Para alterar o diretório padrão do Apache no Void Linux (ou qualquer outra distribuição Linux), siga os seguintes passos. 
-Neste exemplo, vamos alterar o caminho padrão de /var/www/htdocs para outro diretório, como /home/user/public_html
+Neste exemplo, vamos alterar o caminho padrão de ´/var/www/htdocs´ para outro diretório, como /home/user/public_html
 
-Abra o arquivo de configuração principal do Apache, que está localizado em /etc/apache/httpd.conf:
+Abra o arquivo de configuração principal do Apache, que está localizado em ´/etc/apache/httpd.conf´:
 
 Encontre a linha onde o DocumentRoot está definido (geralmente perto do início do arquivo) e altere o caminho para o novo diretório desejado. 
 Por exemplo:
@@ -204,7 +204,7 @@ DocumentRoot "/home/bruto/mirror/void"
 
 ```
 
-Se você configurou um diretório específico, como /home/user/public_html, certifique-se 
+Se você configurou um diretório específico, como ´/home/user/public_html´, certifique-se 
 de que as permissões estejam corretas para que o Apache possa acessar este diretório:
 
 ```
@@ -228,13 +228,13 @@ $ tail -f /var/log/httpd/access_log
 
 # Verificar o Arquivo de Configuração do Repositório
 
-Em Void Linux, os repositórios estão configurados em arquivos dentro do diretório /etc/xbps.d/. Para mudar para o repositório desejado, você deve editar esses arquivos.
+Em Void Linux, os repositórios estão configurados em arquivos dentro do diretório `/etc/xbps.d/`. Para mudar para o repositório desejado, você deve editar esses arquivos.
 
 Verifique se há algum arquivo com o repositório padrão listado. Por exemplo, o arquivo mais comum é 00-repository-main.conf.
 https://github.com/viniciusjb/cnfig_void_mirro_/blob/main/00-repository-main.conf
 
 Cada repositório tem um arquivo que define a URL para o espelho usado. Para repositórios oficiais, esses arquivos são instalados pelo gerenciador 
-de pacotes em /usr/share/xbps.d, mas se arquivos duplicados forem encontrados em /etc/xbps.d, esses valores são usados ​​em vez disso.
+de pacotes em `/usr/share/xbps.d`, mas se arquivos duplicados forem encontrados em `/etc/xbps.d`, esses valores são usados ​​em vez disso.
 Para editar:
 
 ```
