@@ -256,6 +256,7 @@ Void Linux de um servidor remoto para o diretório local especificado. O script 
 Vamos explicar cada parte:
 
 Resumo:
+
 -O script prepara um espelho de arquivos do repositório Void Linux.
 
 -Utiliza rsync para simular a transferência de arquivos entre um servidor remoto e o diretório local.
@@ -265,4 +266,6 @@ Resumo:
 -Exibe o progresso e as estatísticas da operação.
 
 Se o objetivo fosse realmente copiar os arquivos, bastaria remover a opção `--dry-run`.
+
+
 
