@@ -114,19 +114,19 @@ rsync -avHP --delete --exclude 'debug' --exclude 'multilib' --exclude 'musl' \
                  --exclude '*armv6l.xbps*' --exclude '*.i686.xbps*' \
  rsync://alpha.de.repo.voidlinux.org/voidmirror/current/ /mnt/sda1/VOID-REPO/current/
 
-# Note that nonfree is a sub folder beneath 'current'. I exclude that as I have no need for it,
-# for others (nvidia etc.) you may want to include it
-# To get less verbose log leave out v and P options to rsync.
+# Observe que nonfree é uma subpasta abaixo de 'current'. Eu a excluo porque não preciso dela, 
+# para outros (nvidia etc.) você pode querer incluí-la 
+# Para obter um log menos detalhado, deixe de fora as opções v e P para rsync. 
 
-# Once you have a static version of the repo, that can be used as an argument to
-# the --repository option.
-#    xbps-install --repository=/mnt/sda1/VOID-REPO/current geany
-# or be set/declared in /etc/xbps.d/.
-# files in that folder mask/override the default files of the same name in /usr/share/xbps.d
-# i.e. copy those files into /etc/xbps.d/ and edit them to point to the local repo folder
-# A complete URL or full path can be entered to the repo location
+# Depois que você tiver uma versão estática do repositório, ela pode ser usada como um argumento para 
+# a opção --repository. 
+# xbps-install --repository=/mnt/sda1/VOID-REPO/current geany 
+# ou ser definido/declarado em /etc/xbps.d/. 
+# os arquivos nessa pasta mascaram/substituem os arquivos padrão de mesmo nome em /usr/share/xbps.d 
+# ou seja, copie esses arquivos para /etc/xbps.d/ e edite-os para apontar para a pasta do repositório local 
+# Uma URL completa ou caminho completo pode ser inserido para o local do repositório
 
-# Local repo needs to be indexed before it can be used
+# O repositório local precisa ser indexado antes de poder ser usado 
 cd /mnt/sda1/VOID-REPO/current
 xbps-rindex -a /mnt/sda1/VOID-REPO/current/*.xbps
 
