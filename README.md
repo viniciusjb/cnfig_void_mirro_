@@ -312,18 +312,12 @@ Usando SCP (Secure Copy Protocol)
 O scp é uma maneira segura de copiar arquivos entre máquinas via SSH. Certifique-se de que o servidor de destino tenha o SSH habilitado.
 
 Enviar um arquivo:
+´$ scp caminho/do/arquivo usuario@servidor:/caminho/de/destino´
 
-bash
-Copiar código
-scp caminho/do/arquivo usuario@servidor:/caminho/de/destino
 Exemplo:
+´$ scp documento.txt vinicius@192.168.0.10:/home/vinicius/´
 
-bash
-Copiar código
-scp documento.txt vinicius@192.168.0.10:/home/vinicius/
 Enviar um diretório (recursivamente):
 
-bash
-Copiar código
-scp -r pasta usuario@servidor:/caminho/de/destino
+´$ scp -r pasta usuario@servidor:/caminho/de/destino´
 
