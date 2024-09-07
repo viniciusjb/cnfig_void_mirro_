@@ -304,8 +304,26 @@ rsync \
   --stats \
   rsync://mirrors.se
 
-
 ````
 
+# Enviar Arquivos para o Compartilhamento
 
+Usando SCP (Secure Copy Protocol)
+O scp é uma maneira segura de copiar arquivos entre máquinas via SSH. Certifique-se de que o servidor de destino tenha o SSH habilitado.
+
+Enviar um arquivo:
+
+bash
+Copiar código
+scp caminho/do/arquivo usuario@servidor:/caminho/de/destino
+Exemplo:
+
+bash
+Copiar código
+scp documento.txt vinicius@192.168.0.10:/home/vinicius/
+Enviar um diretório (recursivamente):
+
+bash
+Copiar código
+scp -r pasta usuario@servidor:/caminho/de/destino
 
