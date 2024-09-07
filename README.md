@@ -237,6 +237,15 @@ Cada repositório tem um arquivo que define a URL para o espelho usado. Para rep
 de pacotes em `/usr/share/xbps.d`, mas se arquivos duplicados forem encontrados em `/etc/xbps.d`, esses valores são usados ​​em vez disso.
 Para editar:
 
+Para modificar URLs de espelho de forma limpa, copie todos os arquivos de configuração do repositório `/etc/xbps.d`e altere as URLs em cada arquivo de repositório copiado.
+´´´
+$ mkdir -p /etc/xbps.d
+$ cp /usr/share/xbps.d/*-repository-*.conf /etc/xbps.d/
+
+´´´
+altere em : 
+
+
 ```
 $ /etc/xbps.d/00-repository-main.conf
 ou
