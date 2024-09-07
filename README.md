@@ -255,6 +255,8 @@ Este script é uma automação em Bash que utiliza o comando rsync para simular 
 Void Linux de um servidor remoto para o diretório local especificado. O script também captura as estatísticas da operação. 
 Vamos explicar cada parte:
 
+https://github.com/viniciusjb/cnfig_void_mirro_/blob/main/test.sh
+
 Resumo:
 
 -O script prepara um espelho de arquivos do repositório Void Linux.
@@ -266,6 +268,35 @@ Resumo:
 -Exibe o progresso e as estatísticas da operação.
 
 Se o objetivo fosse realmente copiar os arquivos, bastaria remover a opção `--dry-run`.
+
+````
+#!/usr/bin/env bash
+
+STORAGE_PATH="/mirror-data/void"
+
+rsync \
+  --recursive \
+  --links \
+  --perms \
+  --times \
+  --compress \
+  --progress \
+  --delete \
+  --exclude='debug' \
+  --exclude='aarch64' \
+  --exclude='*.armv7l.xbps' \
+  --exclude='armv6l.xbps' \
+  --exclude='*.i686.xbps' \
+  --exclude='*.armv?l.convolution' \
+  --exclude='musl' \
+  --exclude 'multilib' \
+  --exclude 'nonfree' \
+  --dry-run \
+  --stats \
+  rsync://mirrors.se
+
+
+````
 
 
 
