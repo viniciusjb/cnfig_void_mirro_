@@ -103,6 +103,38 @@ Permissões: Certifique-se de que o script tenha permissões de execução:
 chmod +x /caminho/para/seu/script.sh
 ```
 
+##Para rastrear apenas x86_64 e noarch: 
+
+```
+#!/bin/sh
+xbps-install -y rsync
+
+rsync -avHP --delete --exclude 'debug' --exclude 'multilib' --exclude 'musl' \ 
+                 --exclude 'nonfree' --exclude 'aarch64' --exclude '*.armv7l.xbps*' \
+                 --exclude '*armv6l.xbps*' --exclude '*.i686.xbps*' \
+ rsync://alpha.de.repo.voidlinux.org/voidmirror/current/ /mnt/sda1/VOID-REPO/current/
+
+# Note that nonfree is a sub folder beneath 'current'. I exclude that as I have no need for it,
+# for others (nvidia etc.) you may want to include it
+# To get less verbose log leave out v and P options to rsync.
+
+# Once you have a static version of the repo, that can be used as an argument to
+# the --repository option.
+#    xbps-install --repository=/mnt/sda1/VOID-REPO/current geany
+# or be set/declared in /etc/xbps.d/.
+# files in that folder mask/override the default files of the same name in /usr/share/xbps.d
+# i.e. copy those files into /etc/xbps.d/ and edit them to point to the local repo folder
+# A complete URL or full path can be entered to the repo location
+
+# Local repo needs to be indexed before it can be used
+cd /mnt/sda1/VOID-REPO/current
+xbps-rindex -a /mnt/sda1/VOID-REPO/current/*.xbps
+
+```
+
+Mas, como mencionado por outros, isso envolve uma largura de banda considerável. Cerca de 42 GB de espaço de armazenamento local/transferência de dados para o acima.
+
+No entanto, uma vez executado uma vez e execuções repetidas serão muito mais rápidas/com menor largura de banda, pois apenas adições/alterações serão sincronizadas.
 
 # Disponibilizar o servidor com Apache
 
@@ -197,13 +229,22 @@ $ tail -f /var/log/httpd/access_log
 Em Void Linux, os repositórios estão configurados em arquivos dentro do diretório /etc/xbps.d/. Para mudar para o repositório desejado, você deve editar esses arquivos.
 
 Verifique se há algum arquivo com o repositório padrão listado. Por exemplo, o arquivo mais comum é 00-repository-main.conf.
+https://github.com/viniciusjb/cnfig_void_mirro_/blob/main/00-repository-main.conf
 
+Cada repositório tem um arquivo que define a URL para o espelho usado. Para repositórios oficiais, esses arquivos são instalados pelo gerenciador 
+de pacotes em /usr/share/xbps.d, mas se arquivos duplicados forem encontrados em /etc/xbps.d, esses valores são usados ​​em vez disso.
 Para editar:
 
 ```
-nano /etc/xbps.d/00-repository-main.conf
+$ /etc/xbps.d/00-repository-main.conf
+ou
+$ /usr/share/xbps.d/00-repository-main.conf
 
 ```
+Após alterar os arquivos de repositório, execute o seguinte comando para verificar se a mudança foi aplicada e atualizar os pacotes:
 
+```
+$ xbps-install -S
+```
 
 
