@@ -321,3 +321,98 @@ Enviar um diretório (recursivamente):
 
 `$ scp -r pasta usuario@servidor:/caminho/de/destino`
 
+
+# Script para testa a velocidade de repositorio do void 
+
+Aqui está um script simples em Bash que mede a velocidade de download de vários repositórios e exibe o 
+melhor com base no tempo de resposta. O script usa curl para medir o tempo de download dos repositórios.
+
+execute:
+`$ ./find.sh `
+
+```
+#!/usr/bin/env bash
+
+# Script para medir a melhor velocidade de repositório
+
+# Lista de repositórios a serem testados
+declare -A mirrors=(
+    ["repo-fi.voidlinux.org"]="https://repo-fi.voidlinux.org/"
+    ["mirrors.servercentral.com"]="https://mirrors.servercentral.com/voidlinux/"
+    ["repo-us.voidlinux.org"]="https://repo-us.voidlinux.org/"
+    ["repo-de.voidlinux.org"]="https://repo-de.voidlinux.org/"
+    ["mirror.ps.kz"]="https://mirror.ps.kz/voidlinux/"
+    ["mirrors.bfsu.edu.cn"]="https://mirrors.bfsu.edu.cn/voidlinux/"
+    ["mirrors.cnnic.cn"]="https://mirrors.cnnic.cn/voidlinux/"
+    ["mirrors.tuna.tsinghua.edu.cn"]="https://mirrors.tuna.tsinghua.edu.cn/voidlinux/"
+    ["mirror.sjtu.edu.cn"]="https://mirror.sjtu.edu.cn/voidlinux/"
+    ["mirror.nju.edu.cn"]="https://mirror.nju.edu.cn/voidlinux/"
+    ["void.webconverger.org"]="https://void.webconverger.org/"
+    ["mirror.aarnet.edu.au"]="https://mirror.aarnet.edu.au/pub/voidlinux/"
+    ["ftp.swin.edu.au"]="https://ftp.swin.edu.au/voidlinux/"
+    ["voidlinux.com.br"]="https://voidlinux.com.br/repo/"
+    ["void.chililinux.com"]="http://void.chililinux.com/voidlinux/"
+    ["void.chilios.com.br"]="http://void.chilios.com.br/voidlinux/"
+    ["void.cijber.net"]="https://void.cijber.net/"
+    ["ftp.dk.xemacs.org"]="http://ftp.dk.xemacs.org/voidlinux/"
+    ["mirrors.dotsrc.org"]="https://mirrors.dotsrc.org/voidlinux/"
+    ["quantum-mirror.hu"]="https://quantum-mirror.hu/mirrors/pub/voidlinux/"
+    ["voidlinux.mirror.garr.it"]="https://voidlinux.mirror.garr.it/"
+    ["ftp.debian.ru"]="http://ftp.debian.ru/mirrors/voidlinux/"
+    ["mirror.yandex.ru"]="https://mirror.yandex.ru/mirrors/voidlinux/"
+    ["mirror.accum.se"]="https://mirror.accum.se/mirror/voidlinux/"
+    ["ftp.lysator.liu.se"]="https://ftp.lysator.liu.se/pub/voidlinux/"
+    ["void.sakamoto.pl"]="https://void.sakamoto.pl/"
+    ["mirror.puzzle.ch"]="https://mirror.puzzle.ch/voidlinux/"
+    ["mirror.vofr.net"]="https://mirror.vofr.net/voidlinux/"
+    ["mirror2.sandyriver.net"]="https://mirror2.sandyriver.net/pub/voidlinux/"
+)
+
+# Função para medir a velocidade de download
+measure_speed() {
+    local mirror_url=$1
+    local result
+
+    # Testa o tempo de download usando curl
+    result=$(curl -s -w "%{time_total}\n" -o /dev/null "${mirror_url}current/x86_64-repodata")
+    echo "$result"
+}
+
+# Função para encontrar o melhor repositório
+find_best_mirror() {
+    local best_mirror
+    local best_time=10000  # Um valor alto inicial para garantir que qualquer tempo real será menor
+
+    echo "Testando repositórios..."
+
+    for repo in "${!mirrors[@]}"; do
+        local url="${mirrors[$repo]}"
+        echo "Testando $repo ($url)..."
+
+        # Medir o tempo de download
+        local time=$(measure_speed "$url")
+
+        echo "$repo: $time segundos"
+
+        if (( $(echo "$time < $best_time" | bc -l) )); then
+            best_time="$time"
+            best_mirror="$repo"
+        fi
+    done
+
+    echo "Melhor repositório:"
+    echo "$best_mirror: ${mirrors[$best_mirror]} com tempo de $best_time segundos"
+}
+
+# Executar a função principal
+find_best_mirror
+
+```
+
+Para usar o script, salve-o em um arquivo, torne-o executável e execute-o:
+
+```
+$ chmod +x test_mirrors.sh
+$./find.sh
+
+```
