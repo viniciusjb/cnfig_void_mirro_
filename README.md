@@ -249,4 +249,20 @@ Após alterar os arquivos de repositório, execute o seguinte comando para verif
 $ xbps-install -S
 ```
 
+# Verificar tamanho do arquivos à sincronizar
+
+Este script é uma automação em Bash que utiliza o comando rsync para simular a sincronização de um espelho de arquivos do repositório 
+Void Linux de um servidor remoto para o diretório local especificado. O script também captura as estatísticas da operação. 
+Vamos explicar cada parte:
+
+Resumo:
+-O script prepara um espelho de arquivos do repositório Void Linux.
+
+-Utiliza rsync para simular a transferência de arquivos entre um servidor remoto e o diretório local.
+
+-Exclui alguns arquivos e diretórios desnecessários durante a sincronização.
+
+-Exibe o progresso e as estatísticas da operação.
+
+Se o objetivo fosse realmente copiar os arquivos, bastaria remover a opção `--dry-run`.
 
