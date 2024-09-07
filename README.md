@@ -27,6 +27,7 @@ $ sudo xbps-install -S rsync
 ## Configurando rsync
 Este script utiliza o rsync para sincronizar dados do espelho (mirror) do Void Linux a partir de um servidor remoto para um diretório local especificado. 
 Ele inclui várias opções para garantir que a sincronização seja feita de forma eficiente e controlada, excluindo certos tipos de arquivos e diretórios que não são necessários.
+
 script: https://github.com/viniciusjb/cnfig_void_mirro_/blob/main/sync.sh
 
 Fonte: rsync://mirrors.servercentral.com/voidlinux – URL do espelho remoto do Void Linux.
